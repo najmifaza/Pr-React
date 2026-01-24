@@ -5,6 +5,7 @@ import ContactPage from "./pages/ContactPage";
 import ProductPage from "./pages/ProductPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Header from "./components/header";
+import ProductDetail from "./pages/ProductDetailPage";
 import "./App.css";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/product" element={<ProductPage />} />
+        <Route path="/products/:slug" element={<ProductDetail />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
