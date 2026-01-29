@@ -37,13 +37,13 @@ button:focus-visible {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  font-weight: 700; /* Pastikan tebal */
+  font-weight: 700;
 }
 
 h3 {
   font-size: 1.2em;
   line-height: 1.1;
-  font-weight: 700; /* Pastikan tebal */
+  font-weight: 700;
 }
 
 @media (prefers-color-scheme: light) {

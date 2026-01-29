@@ -42,20 +42,7 @@ function Header() {
           </Link>
 
           {/* Tombol Kanan */}
-          <div className="flex gap-9  items-center justify-around">
-            {/* <Link to="/">
-              <button>Home</button>
-              <Link to="/about">
-                <button>about</button>
-              </Link>
-              <Link to="/contact">
-                <button>Contact</button>
-              </Link>
-              <Link to="/product">
-                <button>Product</button>
-              </Link>
-            </Link> */}
-          </div>
+          <div className="flex gap-9  items-center justify-around"></div>
           <div
             id="hs-navbar-header-floating"
             className="hidden hs-collapse overflow-hidden transition-all duration-300 basis-full grow md:block"
@@ -81,6 +68,11 @@ function Header() {
               <Link to="/product">
                 <a className="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-transparent text-gray-500 hover:text-gray-800 focus:outline-hidden dark:text-neutral-400 dark:hover:text-neutral-200">
                   Product
+                </a>
+              </Link>
+              <Link to="/form">
+                <a className="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-transparent text-gray-500 hover:text-gray-800 focus:outline-hidden dark:text-neutral-400 dark:hover:text-neutral-200">
+                  Form
                 </a>
               </Link>
             </div>
