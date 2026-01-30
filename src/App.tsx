@@ -7,6 +7,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import Header from "./components/header";
 import ProductDetail from "./pages/ProductDetailPage";
 import FormPage from "./pages/Form";
+import RHFPage from "./pages/RHFPage";
 import "./App.css";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/product" element={<ProductPage />} />
         <Route path="/products/:slug" element={<ProductDetail />} />
+        <Route path="/RHFPage" element={<RHFPage />} />
         <Route path="/Form" element={<FormPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

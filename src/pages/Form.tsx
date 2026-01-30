@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 function FormPage() {
   // uncontrolled Component/Input
-  const inputNameRef = useRef<HTMLInputElement>(null);
-  const inputPasswordRef = useRef<HTMLInputElement>(null);
+  // const inputNameRef = useRef<HTMLInputElement>(null);
+  // const inputPasswordRef = useRef<HTMLInputElement>(null);
 
   // controlled Component/Input
   const [fullNameInput, setFullNameInput] = useState("");
   const [PasswordInput, setPasswordInput] = useState("");
-
+  //untuk eror massage
   const [usernameErormasage, setUsernameErrorMessage] = useState("");
   const [passwordErormasage, setpasswordErrorMessage] = useState("");
   function handlesubmit() {
@@ -22,12 +22,8 @@ function FormPage() {
     // );
     // alert("Form Submitted Successfully " + fullNameInput + " " + PasswordInput);
 
-    const fullNameValidation = fullNameInput.length <= 5;
     const passwordValidation = PasswordInput.length <= 8;
 
-    if (fullNameValidation) {
-      setUsernameErrorMessage("Username harus lebih dari 5 karakter");
-    }
     if (passwordValidation) {
       setpasswordErrorMessage("Password harus lebih dari 8 karakter");
       return;
@@ -39,7 +35,7 @@ function FormPage() {
       <p className="font-medium text-white dark:text-white-400">Form Page</p>
 
       <h1 className="mt-2 text-2xl font-semibold text-gray-800 md:text-3xl dark:text-white">
-        Masukkan Data Anda
+        Ini Form Menggunakan Native
       </h1>
 
       <p className="mt-3 text-gray-500 dark:text-gray-400">
@@ -61,14 +57,24 @@ function FormPage() {
                   Full name
                 </label>
                 <input
-                  onChange={(event) => setFullNameInput(event.target.value)}
+                  onChange={(event) => {
+                    setFullNameInput(event.target.value);
+                    const fullNameValidation = event.target.value.length <= 5;
+                    if (fullNameValidation) {
+                      setUsernameErrorMessage(
+                        "Username harus lebih dari 5 karakter",
+                      );
+                    } else {
+                      setUsernameErrorMessage("");
+                    }
+                  }}
                   type="text"
                   id="full-name"
                   className="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                   placeholder="Full name"
                   value={fullNameInput}
                 />
-                <span>{usernameErormasage}</span>
+                <span className="text-red-500">{usernameErormasage}</span>
               </div>
               <div className="mb-4 sm:mb-8">
                 <label
@@ -79,19 +85,19 @@ function FormPage() {
                 </label>
                 <input
                   onChange={(event) => setPasswordInput(event.target.value)}
-                  type="text"
+                  type="password"
                   id="Password"
                   className="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                   placeholder="*******"
                   value={PasswordInput}
                 />
-                <span>{passwordErormasage}</span>
+                <span className="text-red-500">{passwordErormasage}</span>
               </div>
 
               <div className="mt-6 grid">
                 <button
                   onClick={handlesubmit}
-                  type="submit"
+                  type="button"
                   className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
                 >
                   Submit
