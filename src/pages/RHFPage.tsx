@@ -1,21 +1,19 @@
 import { useForm } from "react-hook-form";
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-// type RegisterFormSchema = {
-//   fullname: string;
-//   password: string;
-// };
 
 //zod schema
 const registerFormSchema = z.object({
-  fullname: z
-    .string()
-    .min(3, { message: "minimal 3 Char weh" })
-    .max(10, { message: "Max 10 Char weh" }),
+  fullname: z.string().min(3, { message: "minimal 3 Char weh" }),
+  email: z.string().email({ message: "Invalid email address" }),
   password: z
     .string()
     .min(8, { message: "minimal 8 Char weh" })
-    .max(20, { message: "Max 20 Char weh" }),
+    .max(20, { message: "Max 20 Char weh" })
+    .regex(/[A-Z]/, {
+      message: "Password harus mengandung minimal 1 huruf besar",
+    })
+    .regex(/[0-9]/, { message: "Password harus mengandung minimal 1 angka" }),
   age: z.coerce.number().min(18, { message: "Minimal umur 18 tahun" }), // coerce to convert string to number
   DOB: z.coerce.date().optional(),
 });
@@ -23,9 +21,10 @@ const registerFormSchema = z.object({
 type RegisterFormSchema = z.infer<typeof registerFormSchema>;
 
 function RHFPage() {
-  const form = useForm<RegisterFormSchema>({
+  const form = useForm({
     resolver: zodResolver(registerFormSchema),
   });
+  const Values = form.getValues();
   const handleRegisterUser = (values: RegisterFormSchema) => {
     alert("Form Submitted Successfully");
     console.log(values);
