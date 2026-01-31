@@ -8,6 +8,8 @@ import Header from "./components/header";
 import ProductDetail from "./pages/ProductDetailPage";
 import FormPage from "./pages/Form";
 import RHFPage from "./pages/RHFPage";
+import EmployeesPage from "./pages/EmployeesPage";
+import UseStatePage from "./pages/UseStatePage";
 import "./App.css";
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
         <Route path="/products/:slug" element={<ProductDetail />} />
         <Route path="/RHFPage" element={<RHFPage />} />
         <Route path="/Form" element={<FormPage />} />
+        <Route path="/employees" element={<EmployeesPage />} />
+        <Route path="/usestate" element={<UseStatePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>

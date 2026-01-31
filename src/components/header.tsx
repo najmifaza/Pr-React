@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -78,6 +78,16 @@ function Header() {
               <Link to="/RHFPage">
                 <a className="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-transparent text-gray-500 hover:text-gray-800 focus:outline-hidden dark:text-neutral-400 dark:hover:text-neutral-200">
                   React Hook Form
+                </a>
+              </Link>
+              <Link to="/employees">
+                <a className="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-transparent text-gray-500 hover:text-gray-800 focus:outline-hidden dark:text-neutral-400 dark:hover:text-neutral-200">
+                  Employees
+                </a>
+              </Link>
+              <Link to="/usestate">
+                <a className="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-transparent text-gray-500 hover:text-gray-800 focus:outline-hidden dark:text-neutral-400 dark:hover:text-neutral-200">
+                  Use State
                 </a>
               </Link>
             </div>
