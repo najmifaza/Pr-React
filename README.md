@@ -1,73 +1,68 @@
-# React + TypeScript + Vite
+# React Course Tasks - Theodev
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Repositori ini berisi kumpulan tugas, latihan, dan hasil pembelajaran dari kursus React yang dipandu oleh **Theodev** (melalui konten YouTube-nya). Project ini dibangun untuk mempraktikkan konsep-konsep dasar hingga menengah dalam pengembangan web modern menggunakan React.
 
-Currently, two official plugins are available:
+## 🚀 Tentang Project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Project ini adalah aplikasi web *Single Page Application* (SPA) yang mencakup berbagai implementasi fitur React, mulai dari manajemen state sederhana hingga penanganan form yang kompleks.
 
-## React Compiler
+### 🛠️ Tech Stack Utama
+Project ini dibangun menggunakan teknologi terbaru:
+* **Framework:** [React 19](https://react.dev/)
+* **Build Tool:** [Vite](https://vitejs.dev/)
+* **Language:** [TypeScript](https://www.typescriptlang.org/)
+* **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+* **Routing:** [React Router v7](https://reactrouter.com/)
+* **Form & Validation:** [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
+* **Icons:** React Icons
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📂 Fitur & Halaman
 
-## Expanding the ESLint configuration
+Aplikasi ini terdiri dari beberapa halaman latihan dengan fokus materi yang berbeda:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1.  **Navigasi & Routing Dasar**
+    * `Home`, `About`, `Contact`: Halaman statis untuk mempraktikkan navigasi antar halaman menggunakan React Router.
+    * **Dynamic Routing**: Implementasi halaman detail produk (`/products/:slug`) yang menangkap parameter URL.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+2.  **State Management**
+    * `/usestate`: Demonstrasi penggunaan hook `useState` untuk fitur *counter* dan perubahan komponen interaktif.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+3.  **Form Handling (Penanganan Formulir)**
+    * `/Form`: Latihan membuat form secara manual (*Native/Controlled Components*) tanpa *library* tambahan.
+    * `/RHFPage`: Implementasi form modern menggunakan **React Hook Form** yang terintegrasi dengan validasi skema **Zod** (validasi email, password kompleks, dll).
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+4.  **Komponen UI**
+    * Komponen `Header` yang responsif dengan efek *blur* saat di-scroll.
+    * Komponen `Card` untuk menampilkan daftar produk.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📦 Cara Menjalankan
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Ikuti langkah-langkah berikut untuk menjalankan project ini di komputer lokal Anda:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1.  **Clone repositori ini:**
+    ```bash
+    git clone [https://github.com/najmifaza/pr-react.git](https://github.com/najmifaza/pr-react.git)
+    cd pr-react
+    ```
+
+2.  **Install dependencies:**
+    Pastikan Anda sudah menginstall Node.js.
+    ```bash
+    npm install
+    ```
+
+3.  **Jalankan server development:**
+    ```bash
+    npm run dev
+    ```
+
+4.  **Buka di browser:**
+    Akses aplikasi melalui `http://localhost:5173` (atau port lain yang muncul di terminal).
+
+## 📝 Catatan Belajar
+
+* **Vite + React Router v7**: Konfigurasi routing dilakukan di `App.tsx` menggunakan `Routes` dan `Route`.
+* **Tailwind v4**: Menggunakan konfigurasi CSS-first di `index.css` (`@import "tailwindcss";`).
+
+---
+*Dibuat sebagai bagian dari proses belajar React JS.*
