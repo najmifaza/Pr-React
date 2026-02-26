@@ -1,4 +1,9 @@
+import { useState } from "react";
+import { useFetchEmployees } from "../api/useFetchEmployees";
+
 function EmployeesPage() {
+  const { fetchemployees, employeesIsLoading, employeesEror, employees } =
+    useFetchEmployees();
   return (
     <div className="mt-25">
       <p className="font-medium text-white dark:text-white-400">
@@ -12,6 +17,35 @@ function EmployeesPage() {
       <p className="mt-3 text-gray-500 dark:text-gray-400">
         Ini adalah Employees Page
       </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {employees.map((employee) => {
+            return (
+              <tr>
+                <td>{employee.id}</td>
+                <td>{employee.name}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      <button
+        disabled={employeesIsLoading}
+        className="mt-5"
+        onClick={fetchemployees}
+      >
+        {" "}
+        Fetch Employees
+      </button>
+      {employeesIsLoading && <p>Loading</p>}
+      {employeesEror && <p className="text-red-700">{employeesEror}</p>}
     </div>
   );
 }
