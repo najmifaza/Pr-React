@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useFetchEmployees } from "../api/useFetchEmployees";
 
 function EmployeesPage() {
@@ -11,7 +10,7 @@ function EmployeesPage() {
       </p>
 
       <h1 className="mt-2 text-2xl font-semibold text-gray-800 md:text-3xl dark:text-white">
-        Percobaan Data Fetching dan API Respons
+        Percobaan Data Fetching dan API Respons menggunakan Axios
       </h1>
 
       <p className="mt-3 text-gray-500 dark:text-gray-400">
@@ -28,7 +27,7 @@ function EmployeesPage() {
         <tbody>
           {employees.map((employee) => {
             return (
-              <tr>
+              <tr key={employee.id}>
                 <td>{employee.id}</td>
                 <td>{employee.name}</td>
               </tr>
