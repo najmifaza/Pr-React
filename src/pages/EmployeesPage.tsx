@@ -1,8 +1,16 @@
+import axios from "axios";
 import { useFetchEmployees } from "../api/useFetchEmployees";
-
+import { useState } from "react";
 function EmployeesPage() {
+  const [inputText, setInputText] = useState("");
   const { fetchemployees, employeesIsLoading, employeesEror, employees } =
     useFetchEmployees();
+
+  const handleCreateEmployee = async () => {
+    await axios.post("http://localhost:2000/employees", {
+      name: inputText,
+    });
+  };
   return (
     <div className="mt-25">
       <p className="font-medium text-white dark:text-white-400">
@@ -34,6 +42,23 @@ function EmployeesPage() {
             );
           })}
         </tbody>
+        <tfoot>
+          <tr>
+            <td colSpan={2}>
+              <input
+                onChange={(e) => setInputText(e.target.value)}
+                className=" py-2.5 sm:py-3 px-4 block w-full border-gray-200  sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-50 dark:placeholder-neutral-400 dark:focus:ring-neutral-600"
+                type="text"
+                placeholder="Masukkan Data"
+              ></input>
+            </td>
+          </tr>
+          <tr>
+            <td colSpan={2}>
+              <button onClick={handleCreateEmployee}>Create Employee</button>
+            </td>
+          </tr>
+        </tfoot>
       </table>
       <button
         disabled={employeesIsLoading}
