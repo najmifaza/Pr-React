@@ -1,15 +1,17 @@
-import axios from "axios";
+
+import { useCreateEmployees } from "../api/useCreateEmployees";
 import { useFetchEmployees } from "../api/useFetchEmployees";
 import { useState } from "react";
+
 function EmployeesPage() {
-  const [inputText, setInputText] = useState("");
+  const [inputText , setInputText] = useState("");
+
   const { fetchemployees, employeesIsLoading, employeesEror, employees } =
     useFetchEmployees();
-
-  const handleCreateEmployee = async () => {
-    await axios.post("http://localhost:2000/employees", {
-      name: inputText,
-    });
+  const {createEmployeeError,
+    createEemployeeIsLoading,
+    handleCreateEmployee} = useCreateEmployees();
+ 
   };
   return (
     <div className="mt-25">
@@ -55,9 +57,19 @@ function EmployeesPage() {
           </tr>
           <tr>
             <td colSpan={2}>
-              <button onClick={handleCreateEmployee}>Create Employee</button>
+              <button
+                disabled={createEemployeeIsLoading}
+                onClick={() => handleCreateEmployee(inputText)}
+              >
+                Create Employee
+              </button>
             </td>
           </tr>
+          {createEmployeeError && (
+            <tr>
+              <td colSpan={2}>{createEmployeeError}</td>
+            </tr>
+          )}
         </tfoot>
       </table>
       <button
