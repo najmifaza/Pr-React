@@ -5,7 +5,7 @@ export const useCreateEmployees = () => {
   const [createEemployeeIsLoading, setCreateEmployeeIsLoading] =
     useState(false);
   const [createEmployeeError, setCreateEmployeeError] = useState("");
-  const handleCreateEmployee = async (payload: string) => {
+  const createEmployee = async (payload: string) => {
     try {
       setCreateEmployeeIsLoading(true);
       await axios.post("http://localhost:2000/employees", {
@@ -20,6 +20,6 @@ export const useCreateEmployees = () => {
   return {
     createEmployeeError,
     createEemployeeIsLoading,
-    handleCreateEmployee,
+    createEmployee,
   };
 };

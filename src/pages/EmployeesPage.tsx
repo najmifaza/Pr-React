@@ -1,18 +1,21 @@
-
 import { useCreateEmployees } from "../api/useCreateEmployees";
 import { useFetchEmployees } from "../api/useFetchEmployees";
 import { useState } from "react";
 
 function EmployeesPage() {
-  const [inputText , setInputText] = useState("");
+  const [inputText, setInputText] = useState("");
 
   const { fetchemployees, employeesIsLoading, employeesEror, employees } =
     useFetchEmployees();
-  const {createEmployeeError,
-    createEemployeeIsLoading,
-    handleCreateEmployee} = useCreateEmployees();
- 
+  const { createEmployeeError, createEemployeeIsLoading, createEmployee } =
+    useCreateEmployees();
+
+  const handleCreateEmployee = async () => {
+    await createEmployee(inputText);
+    await fetchemployees();
+    setInputText("");
   };
+
   return (
     <div className="mt-25">
       <p className="font-medium text-white dark:text-white-400">
@@ -59,7 +62,7 @@ function EmployeesPage() {
             <td colSpan={2}>
               <button
                 disabled={createEemployeeIsLoading}
-                onClick={() => handleCreateEmployee(inputText)}
+                onClick={handleCreateEmployee}
               >
                 Create Employee
               </button>
